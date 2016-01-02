@@ -52,10 +52,11 @@ class MMKeysHandler(object):
     events to actions on the player backend.
     """
 
-    def __init__(self, app_name, window, player):
+    def __init__(self, app_name, window, player, player_options):
         self._backend = None
         self._window = window
         self._player = player
+        self._player_options = player_options
         self._app_name = app_name
 
     def start(self):
@@ -74,6 +75,7 @@ class MMKeysHandler(object):
             self._backend = None
             self._window = None
             self._player = None
+            self._player_options = None
 
     def _focus_event(self, window, param):
         if window.get_property(param.name) and self._backend:

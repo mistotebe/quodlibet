@@ -142,7 +142,7 @@ def main(argv):
         restore_cb=lambda:
             GLib.idle_add(exec_commands, priority=GLib.PRIORITY_HIGH))
 
-    app.player_options = PlayerOptions(window)
+    app.player_options = player_options = PlayerOptions(window)
 
     from quodlibet.qltk.debugwindow import MinExceptionDialog
     from quodlibet.qltk.window import on_first_map
@@ -171,7 +171,7 @@ def main(argv):
     except ImportError:
         DBusHandler = lambda player, library: None
 
-    mmkeys_handler = MMKeysHandler(app.name, window, player)
+    mmkeys_handler = MMKeysHandler(app.name, window, player, player_options)
     if "QUODLIBET_NO_MMKEYS" not in os.environ:
         mmkeys_handler.start()
     current_path = os.path.join(quodlibet.get_user_dir(), "current")
