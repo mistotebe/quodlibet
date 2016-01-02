@@ -5,6 +5,7 @@
 # it under the terms of the GNU General Public License version 2 as
 # published by the Free Software Foundation
 
+from quodlibet import config
 from ._base import MMKeysAction, MMKeysImportError
 
 
@@ -99,6 +100,11 @@ class MMKeysHandler(object):
         elif action == MMKeysAction.PLAYPAUSE:
             if player.song is None:
                 player.reset()
+            elif config.getboolean("mmkeys", "playpause_tristate") and \
+                    not player.paused:
+                options = self._player_options
+                player.paused = options.stop_after
+                options.stop_after ^= True
             else:
                 player.paused ^= True
         elif action == MMKeysAction.PAUSE:

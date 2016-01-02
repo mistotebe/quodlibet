@@ -132,6 +132,9 @@ INITIAL = {
         "split": "false",
         "add": "false",
     },
+    "mmkeys": {
+        "playpause_tristate": "false",
+    },
     "plugins": {
         # newline-separated plugin IDs
         "active_plugins": "\n".join(AUTO_ENABLED_PLUGINS),

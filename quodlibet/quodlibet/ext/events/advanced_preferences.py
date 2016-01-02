@@ -129,6 +129,12 @@ class AdvancedPreferences(EventPlugin):
                 "Enable rating by pressing the 0-X keys"))
 
         rows.append(
+            boolean_config(
+                "mmkeys", "playpause_tristate",
+                "Tristate Play/Pause:",
+                "First Play/Pause keypress will set 'Stop after this song', pausing on the second"))
+
+        rows.append(
             int_config(
                 "browsers", "cover_size",
                 "Album Cover Size:",
